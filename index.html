@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mark Daven Monseñeros | IT Portfolio</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(90deg, #ff9c00, #ff5e00, #ffc800);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass & floating navbar */
+.nav-glass {
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Animated floating background blobs */
+.bg-blur {
+  position: fixed;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(255,165,0,0.25), transparent);
+  filter: blur(120px);
+  z-index: -1;
+  animation: float 6s ease-in-out infinite;
+}
+.bg-blur.top { top: -100px; left: -100px; }
+.bg-blur.bottom { bottom: -100px; right: -100px; }
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-30px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Particle canvas background */
+#particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  pointer-events: none;
+}
+
+/* Glass effect for sections/cards */
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.4s ease;
+}
+
+/* Glow accents */
+.glow {
+  box-shadow: 0 0 40px rgba(255,165,0,0.6);
+}
+
+/* Hover lift for cards */
+.card-hover:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+/* Fade-in & slide animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 1s ease;
+}
+.fade-in.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Buttons */
+.btn-orange {
+  background-color: #ff5e00;
+  transition: all 0.3s ease;
+}
+.btn-orange:hover {
+  background-color: #ff9c00;
+}
+
+/* Section dividers */
+.divider {
+  width: 24px;
+  height: 2px;
+  background-color: #ff5e00;
+  margin: 0 auto 20px;
+}
+</style>
+</head>
+
+<body class="bg-gray-900 text-white font-sans">
+
+<!-- Particle Background -->
+<canvas id="particle-canvas"></canvas>
+
+<!-- Floating background blobs -->
+<div class="bg-blur top"></div>
+<div class="bg-blur bottom"></div>
+
+<!-- NAVBAR -->
+<header class="fixed w-full z-50 px-6 py-4 flex justify-between items-center nav-glass">
+  <h1 class="text-xl font-bold text-orange-400">Portfolio</h1>
+  <nav class="space-x-6 hidden md:block">
+    <a href="#home" class="hover:text-orange-400">Home</a>
+    <a href="#about" class="hover:text-orange-400">About</a>
+    <a href="#projects" class="hover:text-orange-400">Projects</a>
+    <a href="#contact" class="hover:text-orange-400">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="min-h-screen flex flex-col md:flex-row items-center justify-center gap-12 px-6 pt-28 fade-in">
+
+  <img src="image.jpeg"
+    class="w-80 h-80 md:w-[420px] md:h-[420px] object-cover rounded-full border-4 border-orange-500 glow">
+
+  <div class="text-center md:text-left max-w-xl">
+    <h1 class="text-6xl font-bold mb-4 gradient-text">
+      Mark Daven Monseñeros
+    </h1>
+
+    <div class="text-gray-300 text-xl mb-4">
+      <span id="typing"></span>
+    </div>
+
+    <p class="text-gray-400 mb-6 leading-relaxed">
+      I develop modern web applications and systems focused on usability, performance,
+      and solving real-world problems.
+    </p>
+
+    <a href="#projects" class="btn-orange px-6 py-3 rounded-lg inline-block">View My Work</a>
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-28 px-6 text-center fade-in">
+  <h2 class="text-3xl font-bold text-orange-400 mb-2">About Me</h2>
+  <div class="divider"></div>
+
+  <div class="glass p-10 rounded-xl max-w-3xl mx-auto">
+    <p class="text-gray-300 leading-relaxed">
+      I am an IT student focused on building real-world applications that are functional
+      and user-friendly. I enjoy creating systems that improve efficiency and enhance user experience.
+      <br><br>
+      I have experience developing web-based systems, dashboards, and responsive applications.
+      I continuously learn new technologies to improve my development skills.
+    </p>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-28 px-6 text-center fade-in">
+  <h2 class="text-3xl font-bold text-orange-400 mb-2">Projects</h2>
+  <div class="divider"></div>
+
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    <!-- Project 1 -->
+    <div class="glass p-6 rounded-xl card-hover text-left">
+      <h3 class="text-xl font-bold mb-2">Task Management Web App</h3>
+      <p class="text-gray-400 text-sm mb-3">
+        A productivity tool that allows users to manage tasks, set deadlines, and organize priorities efficiently.
+      </p>
+      <ul class="text-gray-500 text-xs mb-3 list-disc pl-4">
+        <li>Task creation & editing</li>
+        <li>Deadline tracking</li>
+        <li>Responsive design</li>
+      </ul>
+      <p class="text-xs text-gray-500 mb-3">HTML • Tailwind • JavaScript</p>
+      <a href="#" class="text-orange-400 hover:underline">View Demo</a>
+    </div>
+
+    <!-- Project 2 -->
+    <div class="glass p-6 rounded-xl card-hover text-left">
+      <h3 class="text-xl font-bold mb-2">Inventory Management System</h3>
+      <p class="text-gray-400 text-sm mb-3">
+        Tracks products, manages stock levels, and monitors transactions in real-time.
+      </p>
+      <ul class="text-gray-500 text-xs mb-3 list-disc pl-4">
+        <li>Stock monitoring</li>
+        <li>CRUD operations</li>
+        <li>Admin dashboard</li>
+      </ul>
+      <p class="text-xs text-gray-500 mb-3">PHP • MySQL • JavaScript</p>
+      <a href="#" class="text-orange-400 hover:underline">View Project</a>
+    </div>
+
+    <!-- Project 3 -->
+    <div class="glass p-6 rounded-xl card-hover text-left">
+      <h3 class="text-xl font-bold mb-2">Student Attendance Tracker</h3>
+      <p class="text-gray-400 text-sm mb-3">
+        Records and monitors student attendance efficiently for academic institutions.
+      </p>
+      <ul class="text-gray-500 text-xs mb-3 list-disc pl-4">
+        <li>Attendance logging</li>
+        <li>Data filtering</li>
+        <li>Simple analytics view</li>
+      </ul>
+      <p class="text-xs text-gray-500 mb-3">HTML • CSS • JavaScript</p>
+      <a href="#" class="text-orange-400 hover:underline">View Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-28 px-6 text-center fade-in">
+  <h2 class="text-3xl font-bold text-orange-400 mb-2">Contact</h2>
+  <div class="divider"></div>
+
+  <div class="glass p-8 rounded-xl inline-block">
+    <p class="text-gray-300">📧 markdavenpogi@email.com</p>
+    <p class="text-gray-300">📱 09637128132</p>
+    <p class="text-gray-300 mb-6">📍 Philippines</p>
+    <a href="#" class="btn-orange px-6 py-2 rounded hover:bg-yellow-500">Message Me</a>
+  </div>
+</section>
+
+<footer class="text-center p-5 text-gray-500">
+  © 2026 Mark Daven Monseñeros
+</footer>
+
+<script>
+// Typing animation
+const texts=["IT Student","Web Developer","System Builder"];
+let i=0,j=0,cur="",del=false;
+function type(){
+  cur=texts[i];
+  j=del?j-1:j+1;
+  document.getElementById("typing").textContent=cur.substring(0,j);
+  if(!del&&j==cur.length){del=true;setTimeout(type,1000);return;}
+  if(del&&j==0){del=false;i=(i+1)%texts.length;}
+  setTimeout(type,del?50:100);
+}
+type();
+
+// Fade-in on scroll
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('show');
+  });
+},{threshold:0.2});
+document.querySelectorAll('.fade-in').forEach(el=>obs.observe(el));
+
+/* Particle Background Animation */
+const canvas = document.getElementById('particle-canvas');
+const ctx = canvas.getContext('2d');
+let w = canvas.width = window.innerWidth;
+let h = canvas.height = window.innerHeight;
+
+let particles = [];
+const particleCount = 80;
+
+class Particle {
+  constructor() {
+    this.reset();
+  }
+  reset() {
+    this.x = Math.random()*w;
+    this.y = Math.random()*h;
+    this.size = Math.random()*3+1;
+    this.speedX = (Math.random()-0.5)*0.5;
+    this.speedY = (Math.random()-0.5)*0.5;
+  }
+  update() {
+    this.x += this.speedX;
+    this.y += this.speedY;
+    if(this.x<0||this.x>w||this.y<0||this.y>h) this.reset();
+  }
+  draw() {
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fillStyle = 'rgba(255,165,0,0.2)';
+    ctx.fill();
+  }
+}
+
+for(let i=0;i<particleCount;i++) particles.push(new Particle());
+
+function animateParticles() {
+  ctx.clearRect(0,0,w,h);
+  particles.forEach(p=>{
+    p.update();
+    p.draw();
+  });
+  requestAnimationFrame(animateParticles);
+}
+
+animateParticles();
+
+window.addEventListener('resize',()=>{
+  w=canvas.width=window.innerWidth;
+  h=canvas.height=window.innerHeight;
+});
+</script>
+
+</body>
+</html>
